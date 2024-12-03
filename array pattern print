@@ -1,0 +1,21 @@
+class pattern1;
+  rand bit [2:0]a[];
+  constraint a_size{a.size==10;
+                    foreach(a[i]){
+                    a[i]=(1+2)/2;}
+ }
+endclass
+
+
+module test;
+
+  initial begin
+
+    repeat(10) begin
+      pattern1 pkt;
+      pkt=new;
+      assert(pkt.randomize());
+      $display("pkt = %p", pkt.a);
+    end
+  end
+endmodule
